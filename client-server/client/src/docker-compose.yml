@@ -1,0 +1,17 @@
+version: '3.5'
+networks:
+  client-service-network:
+    external:
+      name: flywire2-network
+
+
+services:
+  client-service:
+    build: .
+    ports:
+      - 9191:9191
+    environment:
+      ASPNETCORE_URLS: "http://+:9191"
+      ASPNETCORE_ENVIRONMENT: "Docker"
+    networks:
+      - client-service-network
